@@ -1,0 +1,18 @@
+version: '3'
+services:
+  direct.storybook:
+    image: nginx:1.17.6-alpine
+    volumes:
+      - ./storybook-static:/srv
+      - ./ci/storybook.nginx.conf:/etc/nginx/conf.d/storybook.nginx.conf
+    ports:
+      - "8081:8081"
+  direct.app:
+    image: docker.cicd.pieinsurance.com/direct/backend:latest
+    volumes:
+      - ./build:/runtime/wwwroot
+    ports:
+      - "8080:8080"
+    environment:
+     - DEBUG=1
+     - ASPNETCORE_ENVIRONMENT=Development

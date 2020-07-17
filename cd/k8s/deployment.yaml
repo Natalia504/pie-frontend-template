@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: <SERVICE>
+  namespace: <NAMESPACE>
+  labels:
+    application: <SERVICE>
+spec:
+  revisionHistoryLimit: 2
+  replicas: 1
+  minReadySeconds: 20 #give the deployment 20s to spin up.
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 #rollout 1 at time.
+      maxUnavailable: 1 #don't rollout another until new one is available.
+  selector:
+    matchLabels:
+      application: <SERVICE>
+  template:
+    metadata:
+      labels:
+        application: <SERVICE>
+    spec:
+      containers:
+        - name: <SERVICE>-ui
+          image: docker.cicd.pieinsurance.com/<SERVICE>/ui:<VERSION>
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: pie-docker-registry

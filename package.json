@@ -1,0 +1,105 @@
+{
+  "name": "home",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/microui/home",
+  "dependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.9.1",
+    "@pie/components": "^2.0",
+    "@pie/utils": "^0.0.7",
+    "@reduxjs/toolkit": "^1.2.3",
+    "@testing-library/react": "^10.0.6",
+    "@types/jest": "^24.0.18",
+    "@types/lodash": "^4.14.144",
+    "@types/node": "12.7.12",
+    "@types/react": "16.9.5",
+    "@types/react-dom": "16.9.1",
+    "@types/react-redux": "^7.1.5",
+    "@types/react-router": "^5.1.2",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/redux": "^3.6.0",
+    "@types/redux-mock-store": "^1.0.1",
+    "@types/redux-saga": "^0.10.5",
+    "connected-react-router": "^6.5.2",
+    "eslint-plugin-no-autofix": "0.0.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "lodash": "^4.17.15",
+    "react-redux": "^7.1.1",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.0",
+    "redux": "^4.0.4",
+    "redux-mock-store": "^1.5.4",
+    "redux-saga": "^1.1.1",
+    "typeface-lato": "0.0.75",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@rescripts/cli": "0.0.12",
+    "@rescripts/utilities": "0.0.6",
+    "@storybook/addon-a11y": "^5.2.8",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
+    "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/user-event": "^12.0.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "prettier": "^1.18.2",
+    "storybook-addon-material-ui": "^0.9.0-alpha.20",
+    "storybook-chromatic": "^3.4.0"
+  },
+  "resolutions": {
+    "**/**/yargs-parser": "^18.1.3"
+  },
+  "scripts": {
+    "start": "rescripts start",
+    "s:c": "rescripts start --components",
+    "build": "rescripts build",
+    "test": "react-scripts test",
+    "test-ci": "CI=true react-scripts test",
+    "ci": "yarn install --frozen-lockfile",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public -c storybook",
+    "build-storybook": "build-storybook -s public -c storybook",
+    "chromatic": "CHROMATIC_APP_CODE=f7dau8ih78 chromatic",
+    "audit:ci": "yarn audit --level=high --groups=dependencies; [[ $? -ge 8 ]] && exit 1 || exit 0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.stories.tsx"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@pie/components)).+\\.js$"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(ts|tsx)": "eslint -c .eslintrc.prod.js --cache --fix --quiet"
+  }
+}

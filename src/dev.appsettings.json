@@ -1,0 +1,19 @@
+{
+  "authConfiguration": {
+    "oauth": {
+      "domain": "pieinsurance-integration.auth.us-west-2.amazoncognito.com",
+      "scope": ["openid", "profile"],
+      "redirectSignIn": "http://localhost:3000/authorization-code/callback",
+      "redirectSignOut": "http://localhost:3000/logout",
+      "responseType": "code"
+    },
+    "region": "us-west-2",
+    "userPoolId": "us-west-2_di0SGIDl0",
+    "userPoolWebClientId": "5vt5j3o875551lepa5oh5c90ud"
+  },
+  "userPoolMapping": {
+    "pie.com": {
+      "idpString": "okta.oidc.pieinsurance"
+    }
+  }
+}
